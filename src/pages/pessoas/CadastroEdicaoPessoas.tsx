@@ -8,18 +8,18 @@ import Swal from "sweetalert2";
 import { VTextField, VForm, useVForm } from "../../shared/forms";
 import Grid from "@mui/material/Grid";
 import { Box, Grid2, LinearProgress, Paper, Typography } from "@mui/material";
-import { AutoCompleteCidade } from "./AutoCompleteCidade";
+import { AutoCompleteNiveis } from "./AutoCompleteNiveis";
 
 interface IHandleSalvar {
   nome: string;
   email: string;
-  cidadeId: number;
+  nivelId: number;
 }
 
 const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
-  cidadeId: yup
+  nivelId: yup
   .number()
-  .typeError('O campo Cidade deve ser um número válido!')
+  .typeError('')
   .required('Este campo é obrigatorio e deve ser um valor númerico!'),
   nome: yup
     .string()
@@ -29,7 +29,7 @@ const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
   sexo: yup.string().required('Campo sexo é obrigatorio!'),
   data_nascimento: yup.string().required('Campo data de nascimento é obrigatorio!'),
   hobby: yup.string().required('Campo hobby é obrigatorio!'),
-  idade: yup.number().required('Campo idade é obrigatorio!'),
+  idade: yup.number().typeError('Este campo é obrigatorio e deve ser um valor númerico!').required('Este campo é obrigatorio e deve ser um valor númerico!'),
 });
 
 export const CadastroEdicaoPessoas: React.FC = () => {
@@ -298,6 +298,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                   <VTextField
                     fullWidth
                     name="idade"
+                    type="number"
                     label="Digite seu email"
                     disabled={isLoading}
                   />
@@ -306,7 +307,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
 
               <Grid container item direction="row" spacing={2}>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={4}>
-                <AutoCompleteCidade sternalLoading={isLoading} />
+                <AutoCompleteNiveis sternalLoading={isLoading} />
                 </Grid>
               </Grid>
             </Grid2>

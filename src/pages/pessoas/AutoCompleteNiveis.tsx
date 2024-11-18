@@ -1,11 +1,11 @@
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
-import { CidadesService } from "../../shared/services/api/cidades/CidadesService";
+import { NiveisService } from "../../shared/services/api/niveis/NiveisService";
 import Swal from "sweetalert2";
 import { useDebouce } from "../../shared/hooks";
 import { useField } from "@unform/core";
 
-type IAutoCompleteCidade = {
+type IAutoCompleteNivel = {
   label: string;
   id: number;
 };
@@ -14,11 +14,11 @@ type ISternalLoadingType = {
   sternalLoading: boolean;
 };
 
-export const AutoCompleteCidade: React.FC<ISternalLoadingType> = ({
+export const AutoCompleteNiveis: React.FC<ISternalLoadingType> = ({
   sternalLoading = false,
 }) => {
-  const { fieldName, registerField, defaultValue, error, clearError } = useField("cidadeId");
-  const [opcoes, setOpcoes] = useState<IAutoCompleteCidade[]>([]);
+  const { fieldName, registerField, defaultValue, error, clearError } = useField("nivelId");
+  const [opcoes, setOpcoes] = useState<IAutoCompleteNivel[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectValue, setSelectValue] = useState<number | undefined>(defaultValue);
   const [busca, setBusca] = useState<string>("");
@@ -35,7 +35,7 @@ export const AutoCompleteCidade: React.FC<ISternalLoadingType> = ({
   useEffect(() => {
     debounce(() => {
       setLoading(true);
-      CidadesService.getAll(1, busca).then((result) => {
+      NiveisService.getAll(1, busca).then((result) => {
         if (result instanceof Error) {
           Swal.fire({
             title: "Erro!",
@@ -47,9 +47,9 @@ export const AutoCompleteCidade: React.FC<ISternalLoadingType> = ({
           return;
         } else {
           setOpcoes(
-            result.data.map((cidade) => ({
-              label: cidade.nomeCidade,
-              id: cidade.id,
+            result.data.map((nivel) => ({
+              label: nivel.nomeNivel,
+              id: nivel.id,
             }))
           );
           setLoading(false);
@@ -68,7 +68,7 @@ export const AutoCompleteCidade: React.FC<ISternalLoadingType> = ({
   return (
     <>
       <Autocomplete
-        noOptionsText="Nenhuma cidade encontrada"
+        noOptionsText="Nivel não encontrado"
         value={autoCompleteSelectedOption}
         loading={loading}
         popupIcon={
@@ -79,7 +79,7 @@ export const AutoCompleteCidade: React.FC<ISternalLoadingType> = ({
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Cidade"
+            label="Nivel"
             error={!!error}
             helperText={error}
             variant="outlined"

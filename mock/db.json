@@ -8,7 +8,7 @@
       "data_nascimento": "10/10/2022",
       "hobby": "TESTE 1",
       "idade": 31,
-      "cidadeId": 5
+      "nivelId": 5
     },
     {
       "id": "26",
@@ -17,7 +17,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 1,
+      "nivelIdId": 1,
       "nome": "Ana Freitas"
     },
     {
@@ -27,7 +27,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 2,
+      "nivelIdId": 2,
       "nome": "Marcos Torres"
     },
     {
@@ -38,7 +38,7 @@
       "data_nascimento": "1990-01-01",
       "hobby": "Programação",
       "idade": 31,
-      "cidadeId": 1
+      "nivelIdId": 1
     },
     {
       "id": "29",
@@ -47,7 +47,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 4,
+      "nivelIdId": 4,
       "nome": "Vitor Cardoso"
     },
     {
@@ -58,7 +58,7 @@
       "idade": 31,
       "hobby": "Programação",
       "nome": "Juliana Dias",
-      "cidadeId": 2
+      "nivelIdId": 2
     },
     {
       "id": "31",
@@ -67,7 +67,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 1,
+      "nivelIdId": 1,
       "nome": "Lucas Martins"
     },
     {
@@ -77,7 +77,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 2,
+      "nivelIdId": 2,
       "nome": "Bruna Cavalcanti"
     },
     {
@@ -87,7 +87,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 3,
+      "nivelIdId": 3,
       "nome": "Gustavo Rocha"
     },
     {
@@ -97,7 +97,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 4,
+      "nivelIdId": 4,
       "nome": "Renata Ferreira"
     },
     {
@@ -107,7 +107,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 5,
+      "nivelIdId": 5,
       "nome": "Carlos Nascimento"
     },
     {
@@ -117,7 +117,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 1,
+      "nivelIdId": 1,
       "nome": "Luciana Santana"
     },
     {
@@ -127,7 +127,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 2,
+      "nivelIdId": 2,
       "nome": "Felipe Correia"
     },
     {
@@ -137,7 +137,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 3,
+      "nivelIdId": 3,
       "nome": "Mônica Andrade"
     },
     {
@@ -147,7 +147,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Pagodinho",
-      "cidadeId": 4,
+      "nivelIdId": 4,
       "nome": "Rafael Campos"
     },
     {
@@ -157,7 +157,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 5,
+      "nivelIdId": 5,
       "nome": "Isabela Almeida"
     },
     {
@@ -168,7 +168,7 @@
       "sexo": "M",
       "email": "daniel.brito@gmail.com",
       "nome": "Daniel Brito",
-      "cidadeId": 1
+      "nivelIdId": 1
     },
     {
       "id": "42",
@@ -177,7 +177,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Casa bahia",
-      "cidadeId": 2,
+      "nivelIdId": 2,
       "nome": "Carolina Moura"
     },
     {
@@ -187,7 +187,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 3,
+      "nivelIdId": 3,
       "nome": "Rodrigo Peixoto"
     },
     {
@@ -197,7 +197,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": 5,
+      "nivelIdId": 5,
       "nome": "Gabriel Pereira"
     },
     {
@@ -208,7 +208,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": null
+      "nivelIdId": null
     },
     {
       "id": "c42f",
@@ -218,7 +218,7 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": null
+      "nivelIdId": null
     },
     {
       "id": "cb70",
@@ -228,89 +228,29 @@
       "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "cidadeId": "Sarandi"
+      "nivelIdId": "Sarandi"
     }
   ],
-  "cidades": [
+  "niveis": [
     {
-      "id": 1,
-      "nomeCidade": "São Paulo"
+      "id": "1",
+      "nomeNivel": "Junior"
     },
     {
-      "id": 2,
-      "nomeCidade": "Rio de Janeiro"
+      "id": "2",
+      "nomeNivel": "Pleno"
     },
     {
-      "id": 3,
-      "nomeCidade": "Belo Horizonte"
+      "id": "3",
+      "nomeNivel": "Sênior"
     },
     {
-      "id": 4,
-      "nomeCidade": "Curitiba"
+      "id": "4",
+      "nomeNivel": "Especialista"
     },
     {
-      "id": 5,
-      "nomeCidade": "Porto Alegre"
-    },
-    {
-      "id": 6,
-      "nomeCidade": "Florianópolis"
-    },
-    {
-      "id": 7,
-      "nomeCidade": "Salvador"
-    },
-    {
-      "id": 8,
-      "nomeCidade": "Fortaleza"
-    },
-    {
-      "id": 9,
-      "nomeCidade": "Brasília"
-    },
-    {
-      "id": 10,
-      "nomeCidade": "Goiânia"
-    },
-    {
-      "id": 11,
-      "nomeCidade": "Recife"
-    },
-    {
-      "id": 12,
-      "nomeCidade": "Manaus"
-    },
-    {
-      "id": 13,
-      "nomeCidade": "Belém"
-    },
-    {
-      "id": 14,
-      "nomeCidade": "Vitória"
-    },
-    {
-      "id": 15,
-      "nomeCidade": "Campinas"
-    },
-    {
-      "id": 16,
-      "nomeCidade": "São Luís"
-    },
-    {
-      "id": 17,
-      "nomeCidade": "Maceió"
-    },
-    {
-      "id": 18,
-      "nomeCidade": "João Pessoa"
-    },
-    {
-      "id": 19,
-      "nomeCidade": "Natal"
-    },
-    {
-      "id": 20,
-      "nomeCidade": "Aracaju"
+      "id": "5",
+      "nomeNivel": "Trainee"
     }
   ]
 }

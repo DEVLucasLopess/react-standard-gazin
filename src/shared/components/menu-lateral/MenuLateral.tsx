@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Divider,
   Drawer,
@@ -14,6 +13,7 @@ import {
 import { ReactNode } from "react";
 import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import img from "../../../assets/gazinDark.svg";
 
 interface MenuLateralProps {
   children: ReactNode;
@@ -77,9 +77,15 @@ export const MenuLateral = ({ children }: MenuLateralProps) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Avatar
-              sx={{ height: theme.spacing(12), width: theme.spacing(12) }}
-              src=""
+            <Box
+              component="img"
+              sx={{
+                width: 180,
+                height: 180,
+              }}
+              sizes="10"
+              src={img}
+              alt="Minha imagem"
             />
           </Box>
 

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useDrawerContext } from "../shared/contexts";
 import { useEffect } from "react";
-import { DashBoard, ListagemDePessoas, CadastroEdicaoPessoas, CadastroEdicaoCidades, ListagemDeCidades } from "../pages";
+import { ListagemDePessoas, CadastroEdicaoPessoas, CadastroEdicaoNiveis, ListagemDeNiveis } from "../pages";
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
@@ -15,9 +15,9 @@ export const AppRoutes = () => {
         onClick: undefined,
       },
       {
-        icon: 'location_city',
+        icon: 'home',
         label: 'Nivel de Conhecimento',
-        path: '/cidades',
+        path: '/niveis',
         onClick: undefined,
       },
     ]);
@@ -28,10 +28,10 @@ export const AppRoutes = () => {
       <Route path="/pessoas" element={<ListagemDePessoas />} />
       <Route path="/pessoas/detalhe/:id" element={<CadastroEdicaoPessoas />} />
 
-      <Route path="/cidades" element={<ListagemDeCidades/>} />
-      <Route path="/cidades/detalhe/:id" element={<CadastroEdicaoCidades />} />
+      <Route path="/niveis" element={< ListagemDeNiveis />} />
+      <Route path="/niveis/detalhe/:id" element={<CadastroEdicaoNiveis />} />
 
-      <Route path="*" element={<DashBoard />} />
+      <Route path="*" element={<ListagemDePessoas />} />
     </Routes>
   );
 };

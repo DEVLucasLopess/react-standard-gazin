@@ -4,9 +4,9 @@ import { LayoutBaseDePagina } from "../../shared/layouts";
 import Swal from 'sweetalert2'
 import { useEffect, useMemo, useState } from "react";
 import {
-  IListagemDeCidade,
-  CidadesService,
-} from "../../shared/services/api/cidades/CidadesService";
+  IListagemDeNivel,
+  NiveisService,
+} from "../../shared/services/api/niveis/NiveisService";
 import { useDebouce } from "../../shared/hooks";
 import {
   Icon,
@@ -24,9 +24,9 @@ import {
 } from "@mui/material";
 import { Environment } from "../../shared/environment";
 
-export const ListagemDeCidades: React.FC = () => {
+export const ListagemDeNiveis: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [rows, setRows] = useState<IListagemDeCidade[]>([]);
+  const [rows, setRows] = useState<IListagemDeNivel[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const navigate = useNavigate();
 
@@ -44,12 +44,13 @@ export const ListagemDeCidades: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      CidadesService.getAll(pagina, busca).then((result) => {
+      NiveisService.getAll(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
         } else {
           setTotalCount(result.dataTotalItems);
+          console.log("aaaaaaaaaaaaaa", result.data);
           setRows(result.data);
         }
       });
@@ -68,7 +69,7 @@ export const ListagemDeCidades: React.FC = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        CidadesService.deleteById(id).then((result) => {
+        NiveisService.deleteById(id).then((result) => {
           if (result instanceof Error) {
             Swal.fire({
               title: "Erro!",
@@ -101,12 +102,12 @@ export const ListagemDeCidades: React.FC = () => {
 
   return (
     <LayoutBaseDePagina
-      titulo="Listagem de cidades"
+      titulo="Niveis de Conhecimento"
       barrasDeFerramentas={
         <FerramentasDaListagem
           textoBotaoNovo="Nova"
           mostarInputBusca
-          aoClicarNoBotaoNovo={() => navigate('/cidades/detalhe/nova')}
+          aoClicarNoBotaoNovo={() => navigate('/niveis/detalhe/nova')}
           textoDaBusca={busca}
           aoMudarTextoDeBusca={(texto) =>
             setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
@@ -123,7 +124,7 @@ export const ListagemDeCidades: React.FC = () => {
           <TableHead>
             <TableRow>
               <TableCell width={200}>Ações</TableCell>
-              <TableCell>Nome completo</TableCell>
+              <TableCell>Nivel</TableCell>
             </TableRow>
           </TableHead>
 
@@ -134,11 +135,11 @@ export const ListagemDeCidades: React.FC = () => {
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
-                  <IconButton size="small" onClick={() => navigate(`/cidades/detalhe/${row.id}`)}>
+                  <IconButton size="small" onClick={() => navigate(`/niveis/detalhe/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{row.nomeCidade}</TableCell>
+                <TableCell>{row.nomeNivel}</TableCell>
                 
               </TableRow>
             ))}

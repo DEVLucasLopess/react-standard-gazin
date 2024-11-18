@@ -1,18 +1,18 @@
 import { Environment } from "../../../environment";
 import { Api } from "../axios-config";
 
-export interface IListagemDeCidade {
+export interface IListagemDeNivel {
   id: number;
-  nomeCidade: string;
+  nomeNivel: string;
 }
 
-export interface IDetalheCidade {
+export interface IDetalheNivel {
   id: number;
-  nomeCidade: string;
+  nomeNivel: string;
 }
 
-type TCidadeComTotalCount = {
-  data: IListagemDeCidade[];
+type TNivelComTotalCount = {
+  data: IListagemDeNivel[];
   totalCount: number;
   dataTotalItems: number;
 };
@@ -20,10 +20,10 @@ type TCidadeComTotalCount = {
 const getAll = async (
   page = 1,
   filter = ""
-): Promise<TCidadeComTotalCount | Error> => {
+): Promise<TNivelComTotalCount | Error> => {
   try {
     const { data, headers } = await Api.get(
-      `/cidades?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nomeCidade=${filter}`
+      `/niveis?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nivel=${filter}`
     );
     const dataValue = data.data;
     const dataTotalItems = data.items;
@@ -45,9 +45,9 @@ const getAll = async (
   }
 };
 
-const getById = async (id: number): Promise<IDetalheCidade | Error> => {
+const getById = async (id: number): Promise<IDetalheNivel | Error> => {
   try {
-    const { data } = await Api.get(`/cidades/${id}`);
+    const { data } = await Api.get(`/niveis/${id}`);
     if (data) {
       return data;
     }
@@ -59,10 +59,10 @@ const getById = async (id: number): Promise<IDetalheCidade | Error> => {
 };
 
 const create = async (
-  dados: Omit<IDetalheCidade, "id">
+  dados: Omit<IDetalheNivel, "id">
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post(`/cidades`, dados);
+    const { data } = await Api.post(`/niveis`, dados);
     if (data) {
       return data.id;
     }
@@ -75,10 +75,10 @@ const create = async (
 
 const updateById = async (
   id: number,
-  dados: IDetalheCidade
+  dados: IDetalheNivel
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/cidades/${id}`, dados);
+    await Api.put(`/niveis/${id}`, dados);
   } catch (error) {
     console.error(error);
     return new Error(
@@ -89,14 +89,14 @@ const updateById = async (
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete(`/cidades/${id}`);
+    await Api.delete(`/niveis/${id}`);
   } catch (error) {
     console.error(error);
     return new Error((error as Error).message || "Erro ao apagar o registro!");
   }
 };
 
-export const CidadesService = {
+export const NiveisService = {
   getAll,
   getById,
   create,

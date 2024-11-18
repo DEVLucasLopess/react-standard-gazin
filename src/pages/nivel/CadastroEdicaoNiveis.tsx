@@ -3,24 +3,24 @@ import { LayoutBaseDePagina } from "../../shared/layouts";
 import { useNavigate, useParams } from "react-router-dom";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import * as yup from "yup";
-import { CidadesService } from "../../shared/services/api/cidades/CidadesService";
+import { NiveisService } from "../../shared/services/api/niveis/NiveisService";
 import Swal from "sweetalert2";
 import { VTextField, VForm, useVForm } from "../../shared/forms";
 import Grid from "@mui/material/Grid";
 import { Box, Grid2, LinearProgress, Paper, Typography } from "@mui/material";
 
 interface IHandleSalvar {
-  nomeCidade: string;
+  nomeNivel: string;
 }
 
 const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
-  nomeCidade: yup
+  nomeNivel: yup
     .string()
     .required('O campo "Nome" é obrigatório!')
     .min(3, 'O campo "Nome" deve ter no mínimo 3 caracteres!'),
 });
 
-export const CadastroEdicaoCidades: React.FC = () => {
+export const CadastroEdicaoNiveis: React.FC = () => {
   const { id = "nova" } = useParams<"id">();
   const [isLoading, setIsLoading] = useState(false);
   const [nome, setNome] = useState("");
@@ -30,7 +30,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
   useEffect(() => {
     if (id !== "nova") {  
       setIsLoading(true);
-      CidadesService.getById(Number(id)).then((result) => {
+      NiveisService.getById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           Swal.fire({
@@ -39,15 +39,15 @@ export const CadastroEdicaoCidades: React.FC = () => {
             icon: "error",
             confirmButtonText: "OK",
           });
-          navigate("/cidades");
+          navigate("/niveis");
         } else {
-          setNome(result.nomeCidade);
+          setNome(result.nomeNivel);
           formRef.current?.setData(result);
         }
       });
     } else {
       formRef.current?.setData({
-        nomeCidade: "",
+        nomeNivel: "",
       });
     }
   }, [id]);
@@ -64,7 +64,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        CidadesService.deleteById(id).then((result) => {
+        NiveisService.deleteById(id).then((result) => {
           if (result instanceof Error) {
             Swal.fire({
               title: "Erro!",
@@ -72,7 +72,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
               icon: "error",
               confirmButtonText: "OK",
             });
-            navigate("/cidades");
+            navigate("/niveis");
           } else {
             const Toast = Swal.mixin({
               toast: true,
@@ -87,9 +87,9 @@ export const CadastroEdicaoCidades: React.FC = () => {
             });
             Toast.fire({
               icon: "success",
-              title: `A cidade ${nome} foi excluído com sucesso!`,
+              title: `O Nível ${nome} foi excluído com sucesso!`,
             });
-            navigate("/cidades");
+            navigate("/niveis");
           }
         })
       }
@@ -102,7 +102,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
       .then((dadosValidados) => {
         setIsLoading(true);
         if (id === "nova") {
-          CidadesService.create(dadosValidados).then((result) => {
+          NiveisService.create(dadosValidados).then((result) => {
             setIsLoading(false);
             if (result instanceof Error) {
               Swal.fire({
@@ -118,13 +118,13 @@ export const CadastroEdicaoCidades: React.FC = () => {
                 icon: "success",
                 confirmButtonText: "OK",
               }).then(() => {
-                navigate(`/cidades`);
+                navigate(`/niveis`);
               });
             }
           });
         } else {
           setIsLoading(true);
-          CidadesService.updateById(Number(id), {id: Number(id), ...dadosValidados,
+          NiveisService.updateById(Number(id), {id: Number(id), ...dadosValidados,
           }).then((result) => {
             setIsLoading(false);
             if (result instanceof Error) {
@@ -134,7 +134,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
                 icon: "error",
                 confirmButtonText: "OK",
               }).then(() => {
-                navigate(`/cidades`);
+                navigate(`/niveis`);
               });
             } else {
               const Toast = Swal.mixin({
@@ -152,7 +152,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
                 icon: "success",
                 title: `Alteração feita com sucesso!`,
               }).then(() => {
-                navigate(`/cidades`);
+                navigate(`/niveis`);
               });
             }
           });
@@ -171,7 +171,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
 
   return (
     <LayoutBaseDePagina
-      titulo={id === "nova" ? "Nova Cidade" : nome}
+      titulo={id === "nova" ? "Novo Nível" : nome}
       barrasDeFerramentas={
         <FerramentasDeDetalhe
           textoBotaoNovo="Nova"
@@ -181,8 +181,8 @@ export const CadastroEdicaoCidades: React.FC = () => {
           aoClicarSalvar={() => formRef.current?.submitForm()}
           aoClicarSalvarEFechar={() => formRef.current?.submitForm()}
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate("/cidades/detalhe/nova")}
-          aoClicarEmVoltar={() => navigate("/cidades")}
+          aoClicarEmNovo={() => navigate("/niveis/detalhe/nova")}
+          aoClicarEmVoltar={() => navigate("/niveis")}
         />
       }
     >
@@ -225,7 +225,7 @@ export const CadastroEdicaoCidades: React.FC = () => {
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={4}>
                   <VTextField
                     fullWidth
-                    name="nomeCidade"
+                    name="nomeNivel"
                     label="Digite seu nome completo"
                     disabled={isLoading}
                     onChange={(e) => setNome(e.target.value)}
