@@ -1,16 +1,6 @@
 {
   "pessoas": [
     {
-      "id": "25",
-      "nome": "Fernando Lima",
-      "email": "fernando.lima@gmail.com",
-      "sexo": "M",
-      "data_nascimento": "10/10/2022",
-      "hobby": "TESTE 1",
-      "idade": 31,
-      "nivelId": 5
-    },
-    {
       "id": "26",
       "email": "ana.freitas@gmail.com",
       "sexo": "F",
@@ -102,13 +92,13 @@
     },
     {
       "id": "35",
-      "email": "carlos.nascimento@gmail.com",
-      "sexo": "M",
-      "data_nascimento": "1990-01-01",
       "idade": 31,
       "hobby": "Programação",
-      "nivelIdId": 5,
-      "nome": "Carlos Nascimento"
+      "data_nascimento": "1990-01-01",
+      "sexo": "M",
+      "email": "carlos.nascimento@gmail.com",
+      "nome": "Carlos Nascimento",
+      "nivelId": 3
     },
     {
       "id": "36",

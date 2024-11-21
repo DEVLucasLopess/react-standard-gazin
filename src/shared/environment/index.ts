@@ -2,7 +2,7 @@ export const Environment = {
     /**
      * Define o limite de linhas exibidas na listagem
      */
-    LIMITE_DE_LINHAS: 8,
+    LIMITE_DE_LINHAS: 5,
     /**
      * Texto exebido e todas as inptuts de busca
      */

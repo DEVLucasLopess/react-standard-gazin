@@ -50,7 +50,6 @@ export const ListagemDeNiveis: React.FC = () => {
           alert(result.message);
         } else {
           setTotalCount(result.dataTotalItems);
-          console.log("aaaaaaaaaaaaaa", result.data);
           setRows(result.data);
         }
       });
