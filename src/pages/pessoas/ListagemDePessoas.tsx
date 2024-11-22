@@ -106,7 +106,7 @@ export const ListagemDePessoas: React.FC = () => {
         <FerramentasDaListagem
           textoBotaoNovo="Nova"
           mostarInputBusca
-          aoClicarNoBotaoNovo={() => navigate('/pessoas/detalhe/nova')}
+          aoClicarNoBotaoNovo={() => navigate('/desenvolvedores/nova')}
           textoDaBusca={busca}
           aoMudarTextoDeBusca={(texto) =>
             setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
@@ -138,7 +138,7 @@ export const ListagemDePessoas: React.FC = () => {
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
-                  <IconButton size="small" onClick={() => navigate(`/pessoas/detalhe/${row.id}`)}>
+                  <IconButton size="small" onClick={() => navigate(`/desenvolvedores/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>

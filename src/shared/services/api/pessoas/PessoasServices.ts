@@ -32,9 +32,6 @@ const getAll = async (
   try {
     const url = `/desenvolvedores?pagina=${page}&limite=${Environment.LIMITE_DE_LINHAS}&nivel=${filter}`; 
     const { data, headers } = await Api.get(url);
-
-    console.log("aaaaaaaaaaaaaaa", data);
-
     const dataValue = data.data;
     const dataTotalItems = data.total;
     if (dataValue) {
@@ -57,7 +54,7 @@ const getAll = async (
 
 const getById = async (id: number): Promise<IDetalhePessoas | Error> => {
   try {
-    const { data } = await Api.get(`/pessoas/${id}`);
+    const { data } = await Api.get(`/desenvolvedores/${id}`);
     if (data) {
       return data;
     }
@@ -68,12 +65,11 @@ const getById = async (id: number): Promise<IDetalhePessoas | Error> => {
   }
 };
 
-//Omit vai omitir o id, pois o id é gerado automaticamente pelo banco de dados
 const create = async (
   dados: Omit<IDetalhePessoas, "id">
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post(`/pessoas`, dados);
+    const { data } = await Api.post(`/desenvolvedores`, dados);
     if (data) {
       return data.id;
     }
@@ -89,7 +85,7 @@ const updateById = async (
   dados: IDetalhePessoas
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/pessoas/${id}`, dados);
+    await Api.put(`/desenvolvedores/${id}`, dados);
   } catch (error) {
     console.error(error);
     return new Error(
@@ -100,7 +96,7 @@ const updateById = async (
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete(`/pessoas/${id}`);
+    await Api.delete(`/desenvolvedores/${id}`);
   } catch (error) {
     console.error(error);
     return new Error((error as Error).message || "Erro ao apagar o registro!");

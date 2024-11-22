@@ -18,18 +18,26 @@ interface IHandleSalvar {
 
 const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
   nivelId: yup
-  .number()
-  .typeError('')
-  .required('Este campo é obrigatorio e deve ser um valor númerico!'),
+    .number()
+    .typeError("")
+    .required("Este campo é obrigatorio e deve ser um valor númerico!"),
   nome: yup
     .string()
     .required('O campo "Nome" é obrigatório!')
     .min(3, 'O campo "Nome" deve ter no mínimo 3 caracteres!'),
-  email: yup.string().required('Campo email é obrigatorio!').email('Email inválido!'),
-  sexo: yup.string().required('Campo sexo é obrigatorio!'),
-  data_nascimento: yup.string().required('Campo data de nascimento é obrigatorio!'),
-  hobby: yup.string().required('Campo hobby é obrigatorio!'),
-  idade: yup.number().typeError('Este campo é obrigatorio e deve ser um valor númerico!').required('Este campo é obrigatorio e deve ser um valor númerico!'),
+  email: yup
+    .string()
+    .required("Campo email é obrigatorio!")
+    .email("Email inválido!"),
+  sexo: yup.string().required("Campo sexo é obrigatorio!"),
+  data_nascimento: yup
+    .string()
+    .required("Campo data de nascimento é obrigatorio!"),
+  hobby: yup.string().required("Campo hobby é obrigatorio!"),
+  idade: yup
+    .number()
+    .typeError("Este campo é obrigatorio e deve ser um valor númerico!")
+    .required("Este campo é obrigatorio e deve ser um valor númerico!"),
 });
 
 export const CadastroEdicaoPessoas: React.FC = () => {
@@ -51,7 +59,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
             icon: "error",
             confirmButtonText: "OK",
           });
-          navigate("/pessoas");
+          navigate("/desenvolvedores");
         } else {
           setNome(result.nome);
           formRef.current?.setData(result);
@@ -86,7 +94,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
               icon: "error",
               confirmButtonText: "OK",
             });
-            navigate("/pessoas");
+            navigate("/desenvolvedores");
           } else {
             const Toast = Swal.mixin({
               toast: true,
@@ -103,9 +111,9 @@ export const CadastroEdicaoPessoas: React.FC = () => {
               icon: "success",
               title: `A pessoa ${nome} foi excluído com sucesso!`,
             });
-            navigate("/pessoas");
+            navigate("/desenvolvedores");
           }
-        })
+        });
       }
     });
   };
@@ -132,7 +140,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                 icon: "success",
                 confirmButtonText: "OK",
               }).then(() => {
-                navigate(`/pessoas`);
+                navigate(`/desenvolvedores`);
               });
             }
           });
@@ -150,7 +158,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                 icon: "error",
                 confirmButtonText: "OK",
               }).then(() => {
-                navigate(`/pessoas`);
+                navigate(`/desenvolvedores`);
               });
             } else {
               const Toast = Swal.mixin({
@@ -168,16 +176,17 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                 icon: "success",
                 title: `Alteração feita com sucesso!`,
               }).then(() => {
-                navigate(`/pessoas`);
+                navigate(`/desenvolvedores`);
               });
             }
           });
         }
-      }).catch((error: yup.ValidationError) => {
+      })
+      .catch((error: yup.ValidationError) => {
         const validationError: { [key: string]: string } = {};
 
         error.inner.forEach((error) => {
-          if(!error.path) return;
+          if (!error.path) return;
           validationError[error.path] = error.message;
         });
 
@@ -197,8 +206,8 @@ export const CadastroEdicaoPessoas: React.FC = () => {
           aoClicarSalvar={() => formRef.current?.submitForm()}
           aoClicarSalvarEFechar={() => formRef.current?.submitForm()}
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate("/pessoas/detalhe/nova")}
-          aoClicarEmVoltar={() => navigate("/pessoas")}
+          aoClicarEmNovo={() => navigate("/desenvolvedores/nova")}
+          aoClicarEmVoltar={() => navigate("/desenvolvedores")}
         />
       }
     >
@@ -307,7 +316,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
 
               <Grid container item direction="row" spacing={2}>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={4}>
-                <AutoCompleteNiveis sternalLoading={isLoading} />
+                  <AutoCompleteNiveis sternalLoading={isLoading} />
                 </Grid>
               </Grid>
             </Grid2>
