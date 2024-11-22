@@ -128,6 +128,7 @@ export const ListagemDePessoas: React.FC = () => {
               <TableCell>data de nascimento</TableCell>
               <TableCell>idade</TableCell>
               <TableCell>hobby</TableCell>
+              <TableCell>nivel</TableCell>
             </TableRow>
           </TableHead>
 
@@ -147,6 +148,7 @@ export const ListagemDePessoas: React.FC = () => {
                 <TableCell>{row.data_nascimento}</TableCell>
                 <TableCell>{row.idade} anos</TableCell>
                 <TableCell>{row.hobby}</TableCell>
+                <TableCell>{row.nivel}</TableCell>
               </TableRow>
             ))}
           </TableBody>

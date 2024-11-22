@@ -12,7 +12,6 @@ import { AutoCompleteNiveis } from "./AutoCompleteNiveis";
 
 interface IHandleSalvar {
   nome: string;
-  email: string;
   nivelId: number;
 }
 
@@ -25,10 +24,6 @@ const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
     .string()
     .required('O campo "Nome" é obrigatório!')
     .min(3, 'O campo "Nome" deve ter no mínimo 3 caracteres!'),
-  email: yup
-    .string()
-    .required("Campo email é obrigatorio!")
-    .email("Email inválido!"),
   sexo: yup.string().required("Campo sexo é obrigatorio!"),
   data_nascimento: yup
     .string()
@@ -262,17 +257,6 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                 <Grid item xs={6} sm={12} md={6} lg={6} xl={4}>
                   <VTextField
                     fullWidth
-                    name="email"
-                    label="Digite seu email"
-                    disabled={isLoading}
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container item direction="row" spacing={2}>
-                <Grid item xs={6} sm={12} md={6} lg={6} xl={4}>
-                  <VTextField
-                    fullWidth
                     name="sexo"
                     label="Digite seu sexo"
                     disabled={isLoading}
@@ -296,7 +280,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                   <VTextField
                     fullWidth
                     name="hobby"
-                    label="Digite seu email"
+                    label="Digite seu hobby"
                     disabled={isLoading}
                   />
                 </Grid>
@@ -308,7 +292,7 @@ export const CadastroEdicaoPessoas: React.FC = () => {
                     fullWidth
                     name="idade"
                     type="number"
-                    label="Digite seu email"
+                    label="Digite sua idade"
                     disabled={isLoading}
                   />
                 </Grid>

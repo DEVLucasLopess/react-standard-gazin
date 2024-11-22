@@ -3,18 +3,17 @@ import { Api } from "../axios-config";
 
 export interface IListagemDePessoas {
   id: number;
-  email: string;
   nivelId: number;
   nome: string;
   sexo: string;
   data_nascimento: string;
   hobby: string;
+  nivel: string;
   idade: number;
 }
 
 export interface IDetalhePessoas {
   id: number;
-  email: string;
   nivelId: number;
   nome: string;
 }
@@ -65,9 +64,7 @@ const getById = async (id: number): Promise<IDetalhePessoas | Error> => {
   }
 };
 
-const create = async (
-  dados: Omit<IDetalhePessoas, "id">
-): Promise<number | Error> => {
+const create = async ( dados: Omit<IDetalhePessoas, "id">): Promise<number | Error> => {
   try {
     const { data } = await Api.post(`/desenvolvedores`, dados);
     if (data) {
