@@ -48,7 +48,7 @@ export const AutoCompleteNiveis: React.FC<ISternalLoadingType> = ({
         } else {
           setOpcoes(
             result.data.map((nivel) => ({
-              label: nivel.nomeNivel,
+              label: nivel.nome,
               id: nivel.id,
             }))
           );

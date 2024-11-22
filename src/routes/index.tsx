@@ -26,10 +26,10 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/pessoas" element={<ListagemDePessoas />} />
-      <Route path="/pessoas/detalhe/:id" element={<CadastroEdicaoPessoas />} />
+      <Route path="/desenvolvedores/:id" element={<CadastroEdicaoPessoas />} />
 
       <Route path="/niveis" element={< ListagemDeNiveis />} />
-      <Route path="/niveis/detalhe/:id" element={<CadastroEdicaoNiveis />} />
+      <Route path="/nivel/:id" element={<CadastroEdicaoNiveis />} />
 
       <Route path="*" element={<ListagemDePessoas />} />
     </Routes>

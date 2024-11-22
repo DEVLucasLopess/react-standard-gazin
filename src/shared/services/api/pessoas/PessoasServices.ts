@@ -30,11 +30,13 @@ const getAll = async (
   filter = ""
 ): Promise<TPessoasComTotalCount | Error> => {
   try {
-    const { data, headers } = await Api.get(
-      `/pessoas?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nome=${filter}`
-    );
+    const url = `/desenvolvedores?pagina=${page}&limite=${Environment.LIMITE_DE_LINHAS}&nivel=${filter}`; 
+    const { data, headers } = await Api.get(url);
+
+    console.log("aaaaaaaaaaaaaaa", data);
+
     const dataValue = data.data;
-    const dataTotalItems = data.items;
+    const dataTotalItems = data.total;
     if (dataValue) {
       return {
         data: dataValue,

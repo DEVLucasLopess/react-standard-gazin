@@ -1,6 +1,5 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { FerramentasDaListagem } from "../../shared/components";
-import { format } from 'date-fns';
 import { LayoutBaseDePagina } from "../../shared/layouts";
 import Swal from 'sweetalert2'
 import { useEffect, useMemo, useState } from "react";
@@ -93,7 +92,7 @@ export const ListagemDePessoas: React.FC = () => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          setTotalCount(result.dataTotalItems);
+          setTotalCount(result.totalCount);
           setRows(result.data);
         }
       });
@@ -125,7 +124,6 @@ export const ListagemDePessoas: React.FC = () => {
             <TableRow>
               <TableCell>Ações</TableCell>
               <TableCell>Nome completo</TableCell>
-              <TableCell>email</TableCell>
               <TableCell>sexo</TableCell>
               <TableCell>data de nascimento</TableCell>
               <TableCell>idade</TableCell>
@@ -145,9 +143,8 @@ export const ListagemDePessoas: React.FC = () => {
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nome}</TableCell>
-                <TableCell>{row.email}</TableCell>
                 <TableCell>{row.sexo === 'M' ? 'MASCULINO' : 'FEMININO'}</TableCell>
-                <TableCell>{row.data_nascimento ? format(new Date(row.data_nascimento), 'dd/MM/yyyy') : 'Data inválida'}</TableCell>
+                <TableCell>{row.data_nascimento}</TableCell>
                 <TableCell>{row.idade} anos</TableCell>
                 <TableCell>{row.hobby}</TableCell>
               </TableRow>

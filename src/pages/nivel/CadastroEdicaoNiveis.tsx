@@ -10,11 +10,11 @@ import Grid from "@mui/material/Grid";
 import { Box, Grid2, LinearProgress, Paper, Typography } from "@mui/material";
 
 interface IHandleSalvar {
-  nomeNivel: string;
+  nome: string;
 }
 
 const formValidationSchema: yup.Schema<IHandleSalvar> = yup.object().shape({
-  nomeNivel: yup
+  nome: yup
     .string()
     .required('O campo "Nome" é obrigatório!')
     .min(3, 'O campo "Nome" deve ter no mínimo 3 caracteres!'),
@@ -41,13 +41,13 @@ export const CadastroEdicaoNiveis: React.FC = () => {
           });
           navigate("/niveis");
         } else {
-          setNome(result.nomeNivel);
+          setNome(result.nome);
           formRef.current?.setData(result);
         }
       });
     } else {
       formRef.current?.setData({
-        nomeNivel: "",
+        nome: "",
       });
     }
   }, [id]);
@@ -225,7 +225,7 @@ export const CadastroEdicaoNiveis: React.FC = () => {
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={4}>
                   <VTextField
                     fullWidth
-                    name="nomeNivel"
+                    name="nome"
                     label="Digite seu nome completo"
                     disabled={isLoading}
                     onChange={(e) => setNome(e.target.value)}

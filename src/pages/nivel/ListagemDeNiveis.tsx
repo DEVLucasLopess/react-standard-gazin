@@ -106,7 +106,7 @@ export const ListagemDeNiveis: React.FC = () => {
         <FerramentasDaListagem
           textoBotaoNovo="Nova"
           mostarInputBusca
-          aoClicarNoBotaoNovo={() => navigate('/niveis/detalhe/nova')}
+          aoClicarNoBotaoNovo={() => navigate('/nivel/nova')}
           textoDaBusca={busca}
           aoMudarTextoDeBusca={(texto) =>
             setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
@@ -134,12 +134,11 @@ export const ListagemDeNiveis: React.FC = () => {
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
-                  <IconButton size="small" onClick={() => navigate(`/niveis/detalhe/${row.id}`)}>
+                  <IconButton size="small" onClick={() => navigate(`/nivel/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{row.nomeNivel}</TableCell>
-                
+                <TableCell>{row.nome}</TableCell>
               </TableRow>
             ))}
           </TableBody>
